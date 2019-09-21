@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         initializeRecyclerView();
 
     }
+
+    /**
+     * Initialize recyclerView and adapter to manage it
+     */
     private void initializeRecyclerView(){
         itemsRecyclerViewcAdapter = new ItemRecyclerViewAdapter(exhibits, this, onItemClickListener);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -41,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         itemsRecyclerView.setLayoutManager(layoutManager);
         itemsRecyclerView.setAdapter(itemsRecyclerViewcAdapter);
     }
+
+    /**
+     * ItemClickListener when the user tap a Item of RecyclerView and open new Activity
+     * @return OnItemClickListener
+     */
     private ItemRecyclerViewAdapter.OnItemClickListener setClickListenerOnItem(){
         return new ItemRecyclerViewAdapter.OnItemClickListener() {
             @Override

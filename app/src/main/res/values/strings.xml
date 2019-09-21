@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">My AppTest</string>
     <string name="exhibit_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+    <string name="comments">Comments: </string>
+    <string name="error_data_message">Error showing data</string>
+    <string name="share_using">Share with</string>
+    <string name="share">Share</string>
 </resources>

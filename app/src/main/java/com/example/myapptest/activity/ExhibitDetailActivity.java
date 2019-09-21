@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.willy.ratingbar.BaseRatingBar;
 import com.willy.ratingbar.ScaleRatingBar;
 
 import static com.example.myapptest.activity.MainActivity.exhibits;
+import static com.example.myapptest.util.Utils.sharedRatingOfExhibit;
 
 public class ExhibitDetailActivity extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class ExhibitDetailActivity extends AppCompatActivity {
     private TextView nameTextView;
     private TextView descriptionTextView;
     private ScaleRatingBar scaleRatingBar;
+    private Exhibit exhibit;
     private int exhibitPosition;
 
     @Override
@@ -36,9 +39,14 @@ public class ExhibitDetailActivity extends AppCompatActivity {
         descriptionTextView = findViewById(R.id.description_textview);
         scaleRatingBar = findViewById(R.id.simpleRatingBar);
         scaleRatingBar.setOnRatingChangeListener(setOnRatingListener());
-        Exhibit exhibit = exhibits.get(exhibitPosition);
+        exhibit = exhibits.get(exhibitPosition);
         showData(exhibit);
     }
+
+    /**
+     * Validate and show data existing
+     * @param exhibit current exhibit
+     */
     private void showData(Exhibit exhibit){
 
         if(exhibit != null){
@@ -47,10 +55,14 @@ public class ExhibitDetailActivity extends AppCompatActivity {
             descriptionTextView.setText(exhibit.getDescription());
             scaleRatingBar.setRating(exhibit.getStars());
         }else{
-            Toast.makeText(this, "Error showing data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getText(R.string.error_data_message), Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * Set Listener when when the user change the rating
+     * @return OnRatingChangeListener
+     */
     private ScaleRatingBar.OnRatingChangeListener setOnRatingListener (){
         return new BaseRatingBar.OnRatingChangeListener() {
             @Override
@@ -60,6 +72,10 @@ public class ExhibitDetailActivity extends AppCompatActivity {
         };
     }
 
+    /**
+     * Manage and update exhibit with new rating
+     * @param newRating new exhibit rating
+     */
     private void updateRanting(float newRating){
         Exhibit exhibitWithRating = exhibits.get(exhibitPosition);
         exhibitWithRating.setStars((int) newRating);
@@ -67,11 +83,18 @@ public class ExhibitDetailActivity extends AppCompatActivity {
         exhibits.add(exhibitPosition, exhibitWithRating);
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 1, 0, getString(R.string.share));
+        return super.onCreateOptionsMenu(menu);
+        }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case 1:
+                sharedRatingOfExhibit(this, exhibit);
+                return true;
             case android.R.id.home:
                 // this takes the user 'back', as if they pressed the left-facing triangle icon on the main android toolbar.
                 // if this doesn't work as desired, another possibility is to call `finish()` here.
