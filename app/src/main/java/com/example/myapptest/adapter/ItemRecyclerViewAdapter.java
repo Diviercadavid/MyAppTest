@@ -43,7 +43,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     public void onBindViewHolder(@NonNull ItemRecyclerViewAdapter.GroupViewHolder holder, int position) {
         Exhibit exhibit = mExhibits.get(position);
         holder.nameTextView.setText(exhibit.getName());
-        holder.starsTextView.setText(String.format("Stars %d", exhibit.getStars()));
+        holder.starsTextView.setText(String.valueOf(exhibit.getStars()));
         holder.descriptionTextView.setText(exhibit.getDescription());
         Picasso.with(mContext).load(exhibit.getImage()).into(holder.exhibitImageView);
         holder.bind(exhibit, itemClickListener);

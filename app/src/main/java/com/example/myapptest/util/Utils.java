@@ -10,15 +10,15 @@ import java.util.List;
 
 public class Utils {
 
-    public static List<Exhibit> getCurrentExhibits(Context context){
+    public static List<Exhibit> getCurrentExhibits(Context context) {
         List<Exhibit> exhibits = new ArrayList<>(3);
 
         exhibits.add(new Exhibit("https://www2.todayshipit.com/img/products/265584-12-roma-emperador-julio-cesar-augustus-pure-cobre-bronce-arte-estatua-escultura.jpg",
-                4,"Emperor head", context.getString(R.string.exhibit_description),new String[]{"It's awesome","I don't like"}));
+                4, "Emperor head", context.getString(R.string.exhibit_description), new String[]{"It's awesome", "I don't like"}));
         exhibits.add(new Exhibit("https://previews.123rf.com/images/sedmak/sedmak1211/sedmak121100112/16356515-bruselas-21-de-junio-estatua-de-sumo-sacerdote-de-la-iglesia-de-san-nicol%C3%A1s-el-21-de-junio-en-bruselas.jpg"
-                ,4,"Priest statue",context.getString(R.string.exhibit_description),new String[]{"It's awesome","I don't like"}));
+                , 4, "Priest statue", context.getString(R.string.exhibit_description), new String[]{"It's awesome", "I don't like"}));
         exhibits.add(new Exhibit("https://ae01.alicdn.com/kf/HTB1BdWpJXXXXXaKXpXXq6xXFXXXV/Sunsun00418-la-enorme-cabeza-de-le-n-escultura-de-bronce-plana-estatua-el-arte-colgante.jpg"
-                ,4,"Lion head",context.getString(R.string.exhibit_description),new String[]{"It's awesome","I don't like"}));
+                , 4, "Lion head", context.getString(R.string.exhibit_description), new String[]{"It's awesome", "I don't like"}));
 
         return exhibits;
     }

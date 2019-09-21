@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         itemsRecyclerView = findViewById(R.id.my_recycler_view);
         exhibits = getCurrentExhibits(this);
+
         onItemClickListener = setClickListenerOnItem();
         initializeRecyclerView();
 
@@ -40,14 +41,19 @@ public class MainActivity extends AppCompatActivity {
         itemsRecyclerView.setLayoutManager(layoutManager);
         itemsRecyclerView.setAdapter(itemsRecyclerViewcAdapter);
     }
-
     private ItemRecyclerViewAdapter.OnItemClickListener setClickListenerOnItem(){
         return new ItemRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Exhibit exhibit, int position) {
                 startActivity(new Intent(MainActivity.this, ExhibitDetailActivity.class).putExtra("position", position));
             }
+
         };
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        itemsRecyclerViewcAdapter.notifyDataSetChanged();
+    }
 }

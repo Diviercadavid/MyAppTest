@@ -10,6 +10,7 @@
         android:id="@+id/exhibit_imageview"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,8 +22,7 @@
         android:textSize="26dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exhibit_imageview" />
+        app:layout_constraintTop_toBottomOf="@+id/simpleRatingBar" />
 
     <TextView
         android:id="@+id/description_textview"
@@ -31,5 +31,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_textview" />
+
+    <com.willy.ratingbar.ScaleRatingBar
+        android:id="@+id/simpleRatingBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exhibit_imageview"
+        app:srb_clearRatingEnabled="true"
+        app:srb_clickable="true"
+        app:srb_isIndicator="false"
+        app:srb_minimumStars="1"
+        app:srb_numStars="5"
+        app:srb_rating="2"
+        app:srb_scrollable="true"
+        app:srb_starHeight="30dp"
+        app:srb_starPadding="15dp"
+        app:srb_starWidth="30dp"
+        app:srb_stepSize="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
